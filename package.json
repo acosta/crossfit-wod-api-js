@@ -1,0 +1,26 @@
+{
+  "name": "crossfit-wod-api",
+  "version": "1.0.0",
+  "description": "A simple REST API",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acosta/crossfit-wod-api-js.git"
+  },
+  "author": "Afonso Costa",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/acosta/crossfit-wod-api-js/issues"
+  },
+  "homepage": "https://github.com/acosta/crossfit-wod-api-js#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
