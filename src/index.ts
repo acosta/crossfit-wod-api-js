@@ -1,9 +1,12 @@
 import express, { Application } from "express";
+import bodyParser from "body-parser";
 
 import * as workoutController from "./controllers/workoutController";
 
 const app:Application = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(bodyParser.json())
 
 app.get("/api/v1/workouts", workoutController.getAllWorkouts);
 app.get("/api/v1/workouts/:workoutId", workoutController.getWorkout);
