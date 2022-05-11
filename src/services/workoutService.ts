@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 import * as workoutDB from "../database/Workout"
 
 export const getAllWorkouts = () => {
@@ -10,7 +12,13 @@ export const getWorkout = () => {
 };
 
 export const createWorkout = (newWorkout: any) => {
-    const createdWorkout = workoutDB.createNewWorkout(newWorkout)
+    const workoutToInsert = {
+        ...newWorkout,
+        id: uuid(),
+        createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+        updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+    };
+    const createdWorkout = workoutDB.createNewWorkout(workoutToInsert)
     return createdWorkout;
 };
 
