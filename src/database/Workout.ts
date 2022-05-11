@@ -24,7 +24,22 @@ export const getWorkout = (workoutId: any) => {
 export const deleteWorkout = (workoutId: any) => {
     const indexForDeletion = DB.workouts.findIndex((workout) => workout.id === workoutId);
     if (indexForDeletion === -1) {
-      return;
+        return;
     }
     DB.workouts.splice(indexForDeletion, 1);
-  };
+};
+
+export const updateWorkout = (workoutId: any, workout: any) => {
+    const indexForUpdate = DB.workouts.findIndex((workout) => workout.id === workoutId);
+    if (indexForUpdate === -1) {
+        return;
+    }
+
+    const updatedWorkout = {
+        ...DB.workouts[indexForUpdate],
+        ...workout,
+        updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+    };
+    DB.workouts[indexForUpdate] = updatedWorkout;
+    return updatedWorkout;
+};

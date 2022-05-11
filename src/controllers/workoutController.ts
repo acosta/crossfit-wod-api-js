@@ -22,6 +22,7 @@ export const createWorkout = (req: Request, res: Response) => {
     if (!body.name || !body.mode || !body.equipment || !body.exercises || !body.trainerTips) {
         return;
     }
+
     const newWorkout = {
         name: body.name,
         mode: body.mode,
@@ -34,8 +35,13 @@ export const createWorkout = (req: Request, res: Response) => {
 };
 
 export const updateWorkout = (req: Request, res: Response) => {
-    const updatedWorkout = workoutService.updateWorkout()
-    res.send("Update an existing workout");
+    const { body, params: { workoutId }, } = req;
+    if (!workoutId) {
+        return;
+    }
+
+    const updatedWorkout = workoutService.updateWorkout(workoutId, body);
+    res.send(updatedWorkout);
 };
 
 export const deleteWorkout = (req: Request, res: Response) => {
@@ -43,6 +49,7 @@ export const deleteWorkout = (req: Request, res: Response) => {
     if (!workoutId) {
         return;
     }
+
     workoutService.deleteWorkout(workoutId)
     res.status(204).send({ status: "OK" });
 };

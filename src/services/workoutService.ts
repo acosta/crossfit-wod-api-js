@@ -23,8 +23,9 @@ export const createWorkout = (newWorkout: any) => {
     return createdWorkout;
 };
 
-export const updateWorkout = () => {
-    return;
+export const updateWorkout = (workoutId: any, workout: any) => {
+    const updatedWorkout = workoutDB.updateWorkout(workoutId, workout);
+    return updatedWorkout;
 };
 
 export const deleteWorkout = (workoutId: any) => {
