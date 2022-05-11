@@ -9,9 +9,9 @@ export const getAllWorkouts = (req: Request, res: Response) => {
 
 export const getWorkout = (req: Request, res: Response) => {
     const { params: { workoutId }, } = req;
-      if (!workoutId) {
+    if (!workoutId) {
         return;
-      }
+    }
 
     const workout = workoutService.getWorkout(workoutId)
     res.send(workout);
@@ -39,6 +39,10 @@ export const updateWorkout = (req: Request, res: Response) => {
 };
 
 export const deleteWorkout = (req: Request, res: Response) => {
-    workoutService.deleteWorkout()
-    res.send("Delete an existing workout");
+    const { params: { workoutId }, } = req;
+    if (!workoutId) {
+        return;
+    }
+    workoutService.deleteWorkout(workoutId)
+    res.status(204).send({ status: "OK" });
 };

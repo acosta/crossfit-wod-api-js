@@ -27,6 +27,6 @@ export const updateWorkout = () => {
     return;
 };
 
-export const deleteWorkout = () => {
-    return;
+export const deleteWorkout = (workoutId: any) => {
+    workoutDB.deleteWorkout(workoutId);
 };

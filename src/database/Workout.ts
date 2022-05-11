@@ -20,3 +20,11 @@ export const getWorkout = (workoutId: any) => {
     }
     return workout;
 };
+
+export const deleteWorkout = (workoutId: any) => {
+    const indexForDeletion = DB.workouts.findIndex((workout) => workout.id === workoutId);
+    if (indexForDeletion === -1) {
+      return;
+    }
+    DB.workouts.splice(indexForDeletion, 1);
+  };
