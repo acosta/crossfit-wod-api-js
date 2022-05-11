@@ -7,8 +7,9 @@ export const getAllWorkouts = () => {
     return allWorkouts;
 };
 
-export const getWorkout = () => {
-    return;
+export const getWorkout = (workoutId: any) => {
+    const workout = workoutDB.getWorkout(workoutId);
+    return workout;
 };
 
 export const createWorkout = (newWorkout: any) => {

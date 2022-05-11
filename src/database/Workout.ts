@@ -12,3 +12,11 @@ export const createNewWorkout = (newWorkout: any) => {
     DB.workouts.push(newWorkout);
     return newWorkout;
 };
+
+export const getWorkout = (workoutId: any) => {
+    const workout = DB.workouts.find((workout) => workout.id === workoutId);
+    if (!workout) {
+        return;
+    }
+    return workout;
+};

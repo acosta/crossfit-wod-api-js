@@ -8,8 +8,13 @@ export const getAllWorkouts = (req: Request, res: Response) => {
 };
 
 export const getWorkout = (req: Request, res: Response) => {
-    const workout = workoutService.getWorkout()
-    res.send("Get an existing workout");
+    const { params: { workoutId }, } = req;
+      if (!workoutId) {
+        return;
+      }
+
+    const workout = workoutService.getWorkout(workoutId)
+    res.send(workout);
 };
 
 export const createWorkout = (req: Request, res: Response) => {
