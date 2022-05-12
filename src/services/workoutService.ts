@@ -1,15 +1,23 @@
 import { v4 as uuid } from "uuid";
 
-import * as workoutDB from "../database/Workout"
+import * as workoutDB from "../database/Workout";
 
 export const getAllWorkouts = () => {
-    const allWorkouts = workoutDB.getAllWorkouts()
-    return allWorkouts;
+    try {
+        const allWorkouts = workoutDB.getAllWorkouts();
+        return allWorkouts;
+    } catch (error: any) {
+        throw error;
+    }
 };
 
 export const getWorkout = (workoutId: any) => {
-    const workout = workoutDB.getWorkout(workoutId);
-    return workout;
+    try {
+        const workout = workoutDB.getWorkout(workoutId);
+        return workout;
+    } catch (error: any) {
+        throw error;
+    }
 };
 
 export const createWorkout = (newWorkout: any) => {
@@ -19,15 +27,27 @@ export const createWorkout = (newWorkout: any) => {
         createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
         updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
     };
-    const createdWorkout = workoutDB.createNewWorkout(workoutToInsert)
-    return createdWorkout;
+    try {
+        const createdWorkout = workoutDB.createNewWorkout(workoutToInsert)
+        return createdWorkout;
+    } catch (error: any) {
+        throw error;
+    }
 };
 
 export const updateWorkout = (workoutId: any, workout: any) => {
-    const updatedWorkout = workoutDB.updateWorkout(workoutId, workout);
-    return updatedWorkout;
+    try {
+        const updatedWorkout = workoutDB.updateWorkout(workoutId, workout);
+        return updatedWorkout;
+    } catch (error: any) {
+        throw error;
+    }
 };
 
 export const deleteWorkout = (workoutId: any) => {
-    workoutDB.deleteWorkout(workoutId);
+    try {
+        workoutDB.deleteWorkout(workoutId);
+    } catch (error: any) {
+        throw error;
+    }
 };
